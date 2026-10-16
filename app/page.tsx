@@ -4,6 +4,7 @@ import ToolCard from "@/components/ToolCard";
 import FeaturedSlot from "@/components/FeaturedSlot";
 import Newsletter from "@/components/Newsletter";
 import { tools, categories, newest, toolsIn } from "@/lib/data";
+import { comparisons } from "@/data/comparisons";
 import { SITE } from "@/lib/config";
 export default function Home() {
   const ld = { "@context": "https://schema.org", "@type": "WebSite", name: SITE.name, url: SITE.url, description: SITE.tagline };
@@ -17,6 +18,19 @@ export default function Home() {
       <FeaturedSlot />
       <section><h2 className="mb-4 text-2xl font-semibold text-white">New releases</h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{newest(4).map((t) => <ToolCard key={t.slug} tool={t} />)}</div></section>
+      {comparisons.length > 0 && (
+        <section>
+          <h2 className="mb-4 text-2xl font-semibold text-white">Comparisons</h2>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {comparisons.map((c) => (
+              <Link key={c.slug} href={`/compare/${c.slug}`} className="card">
+                <div className="font-semibold text-white">{c.title}</div>
+                <div className="mt-1 text-sm text-gray-400">{c.description}</div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
       <section id="categories"><h2 className="mb-4 text-2xl font-semibold text-white">Browse by use case</h2>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">{categories.map((c) => (
           <Link key={c.slug} href={`/use-case/${c.slug}`} className="card"><div className="font-semibold text-white">{c.name}</div><div className="text-xs text-gray-500">{toolsIn(c.slug).length} tools</div></Link>))}</div></section>
