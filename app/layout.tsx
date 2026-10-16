@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
@@ -18,6 +19,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </header>
       <main className="mx-auto max-w-6xl px-5 pb-20">{children}</main>
       <footer className="border-t border-white/10 py-8 text-center text-sm text-gray-500">© {new Date().getFullYear()} {SITE.name} · <Link href="/sponsor">Advertise</Link> · <a href="/llms.txt">llms.txt</a></footer>
-    </body></html>
+    <Analytics /></body></html>
   );
 }
