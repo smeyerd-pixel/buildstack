@@ -17,6 +17,12 @@ export default function Sponsor() {
           <ul className="space-y-1 text-sm text-gray-400"><li>✓ Top slot on home + category pages</li><li>✓ Featured badge & highlighted card</li><li>✓ Newsletter mention</li></ul>
           <a href={p.url || `mailto:${SITE.contactEmail}?subject=Featured listing`} className="btn">{p.url ? "Book now" : "Contact us to book"}</a>
         </div>))}</div>
+      <div id="top100" className="space-y-4 pt-4"><h2 className="text-2xl font-bold text-white">MCP &amp; Skills Top 100 sponsorships</h2>
+        <p className="max-w-2xl text-gray-400">Put your MCP server, Agent Skill or dev tool in front of builders who check the weekly <a href="/top100" className="underline">Top 100 chart</a>.</p>
+        <div className="grid gap-4 md:grid-cols-2">
+          <div className="card space-y-3 p-8"><div className="text-gray-400">Featured on the chart</div><div className="text-4xl font-bold text-white">$49<span className="text-base text-gray-500">/month</span></div><ul className="space-y-1 text-sm text-gray-400"><li>✓ Sponsored slot at the top of /top100</li><li>✓ Highlighted card and link</li></ul><a href={`mailto:${SITE.contactEmail}?subject=Top 100 featured slot`} className="btn">Contact us</a></div>
+          <div className="card space-y-3 p-8"><div className="text-gray-400">Category sponsor</div><div className="text-4xl font-bold text-white">$199<span className="text-base text-gray-500">/month</span></div><ul className="space-y-1 text-sm text-gray-400"><li>✓ Own a category (MCP, Skills, or Claude Code add-ons)</li><li>✓ Mention in the weekly chart thread + newsletter</li></ul><a href={`mailto:${SITE.contactEmail}?subject=Top 100 category sponsor`} className="btn">Contact us</a></div>
+        </div></div>
     </div>
   );
 }

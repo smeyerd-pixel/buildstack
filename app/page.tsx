@@ -16,6 +16,7 @@ export default function Home() {
         <p className="mx-auto mt-4 max-w-2xl text-gray-400">{tools.length}+ hand-picked AI tools for vibe coders and builders, organized by use case, updated daily.</p>
       </section>
       <FeaturedSlot />
+      <Link href="/top100" className="card flex items-center justify-between p-5"><div><span className="chip text-violet-300">New · weekly chart</span><div className="mt-2 text-lg font-semibold text-white">MCP &amp; Skills Top 100</div><div className="text-sm text-gray-400">The top MCP servers, Agent Skills and Claude Code add-ons, ranked every week.</div></div><span className="btn">See the chart →</span></Link>
       <section><h2 className="mb-4 text-2xl font-semibold text-white">New releases</h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{newest(4).map((t) => <ToolCard key={t.slug} tool={t} />)}</div></section>
       {comparisons.length > 0 && (
