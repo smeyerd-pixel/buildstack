@@ -20,7 +20,11 @@ for (const [q, cat] of QUERIES) for (const page of [1, 2]) {
   }
 }
 // Exclude generic lists/awesome-collections? Keep them but they're real repos. Skip forks of nothing; skip if no description.
-let all = [...repos.values()].filter((r) => r.description);
+// Relevance filter: must itself BE an MCP server, Agent Skill, or Claude Code add-on.
+const EXCLUDE = new Set(["n8n-io/n8n","langgenius/dify","open-webui/open-webui","snailclimb/javaguide","nousresearch/hermes-agent","browser-use/browser-use","google-gemini/gemini-cli","lobehub/lobe-chat","cline/cline","continuedev/continue","infiniflow/ragflow","mintplex-labs/anything-llm","firecrawl/firecrawl","microsoft/autogen","crewaiinc/crewai","langchain-ai/langchain","openai/codex","anomalyco/opencode","sst/opencode","cherryhq/cherry-studio","zed-industries/zed","asgeirtj/system_prompts_leaks","jeecgboot/jeecgboot","hkuds/nanobot","zhayujie/cowagent","diegosouzapw/omniroute"]);
+const REL = /\bmcp\b|mcp[-_ ]?server|model[- ]context[- ]protocol|\bskills?\b|claude[- ]?code|\bclaude\b/i;
+const GENERAL = /platform|framework for building|ai interface|workflow automation|interview|chat ?ui|desktop client|ide\b|operating system/i;
+let all = [...repos.values()].filter((r) => r.description && !EXCLUDE.has(r.full_name.toLowerCase()) && (REL.test(r.name) || REL.test(r.description)) && !(GENERAL.test(r.description) && !REL.test(r.name)));
 // previous snapshot for deltas
 const snaps = fs.existsSync(DIR) ? fs.readdirSync(DIR).filter((f) => /^\d{4}-\d{2}-\d{2}\.json$/.test(f)).sort() : [];
 const today = new Date().toISOString().slice(0, 10);
