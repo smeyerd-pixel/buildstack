@@ -1,0 +1,6 @@
+@import "tailwindcss";
+:root { color-scheme: dark; }
+body { background: #07080c; color: #e5e7eb; font-family: ui-sans-serif, system-ui, sans-serif; }
+.card { @apply rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition hover:border-violet-400/40 hover:bg-white/[0.06]; }
+.chip { @apply rounded-full border border-white/10 px-2.5 py-0.5 text-xs text-gray-300; }
+.btn { @apply inline-flex items-center rounded-xl bg-gradient-to-r from-violet-500 to-cyan-500 px-4 py-2 font-semibold text-white hover:opacity-90; }
