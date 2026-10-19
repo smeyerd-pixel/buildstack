@@ -33,7 +33,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     headline: c.title,
     description: c.description,
     url: `${SITE.url}/compare/${c.slug}`,
-    dateModified: "2026-10-16",
+    dateModified: c.updated,
   };
 
   return (
@@ -88,8 +88,12 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         </div>
       </section>
 
+      <p className="text-sm">
+        <Link href="/compare" className="text-cyan-400 hover:underline">← All comparisons</Link>
+      </p>
+
       <p className="text-xs text-gray-600">
-        Updated 2026-10-16 on {SITE.name}. Pricing and features change; check each official site before you buy.
+        Updated {c.updated} on {SITE.name}. Pricing and features change; check each official site before you buy.
       </p>
     </div>
   );

@@ -9,8 +9,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE.url}/guides` },
     { url: `${SITE.url}/guides/use-a-github-repo`, lastModified: "2026-10-16", priority: 0.8 },
     { url: `${SITE.url}/top100`, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${SITE.url}/compare`, changeFrequency: "weekly", priority: 0.8, lastModified: comparisons.map((c) => c.updated).sort().at(-1) },
     ...categories.map((c) => ({ url: `${SITE.url}/use-case/${c.slug}`, changeFrequency: "daily" as const, priority: 0.8 })),
-    ...comparisons.map((c) => ({ url: `${SITE.url}/compare/${c.slug}`, changeFrequency: "weekly" as const, priority: 0.7, lastModified: "2026-10-16" })),
+    ...comparisons.map((c) => ({ url: `${SITE.url}/compare/${c.slug}`, changeFrequency: "weekly" as const, priority: 0.7, lastModified: c.updated })),
     ...tools.map((t) => ({ url: `${SITE.url}/tools/${t.slug}`, lastModified: t.added })),
   ];
 }
