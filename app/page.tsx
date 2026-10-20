@@ -20,7 +20,8 @@ export default function Home() {
       <Link href="/madness" className="card flex flex-col gap-4 border-violet-400/40 p-5 sm:flex-row sm:items-center sm:justify-between"><div><span className="chip text-violet-300">🏀 New · AI Madness 2026</span><div className="mt-2 text-lg font-semibold text-white">The coding agent bracket: 32 tools, you pick the champion</div><div className="text-sm text-gray-400">Cursor, Claude Code, Codex, OpenCode, Copilot, Lovable and more go head to head. Round of 32 voting opens Mon Oct 26.</div></div><span className="btn shrink-0">See the bracket →</span></Link>
       <Link href="/top100" className="card flex items-center justify-between p-5"><div><span className="chip text-violet-300">New · weekly chart</span><div className="mt-2 text-lg font-semibold text-white">MCP &amp; Skills Top 100</div><div className="text-sm text-gray-400">The top MCP servers, Agent Skills and Claude Code add-ons, ranked every week.</div></div><span className="btn">See the chart →</span></Link>
       <section><h2 className="mb-4 text-2xl font-semibold text-white">New releases</h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{newest(4).map((t) => <ToolCard key={t.slug} tool={t} />)}</div></section>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{newest(4).map((t) => <ToolCard key={t.slug} tool={t} />)}</div>
+        <p className="mt-3 text-sm"><Link href="/new" className="text-cyan-400 hover:underline">All new tools, day by day →</Link></p></section>
       {comparisons.length > 0 && (
         <section>
           <h2 className="mb-4 text-2xl font-semibold text-white">Comparisons</h2>

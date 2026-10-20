@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: { default: `${SITE.name} – ${SITE.tagline}`, template: `%s | ${SITE.name}` },
   description: "Find the right AI tool for what you're building: coding agents, app builders, design, video, voice, image, research, automation, LLM APIs and deployment.",
+  alternates: { types: { "application/rss+xml": [{ url: "/feed.xml", title: `${SITE.name}: new AI tools` }] } },
   openGraph: { siteName: SITE.name, type: "website" }, twitter: { card: "summary_large_image" },
 };
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -18,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <nav className="flex flex-wrap justify-end gap-x-5 gap-y-1 text-sm text-gray-400"><Link href="/madness" className="font-medium text-violet-300 hover:text-white">AI Madness</Link><Link href="/top100" className="hover:text-white">Top 100</Link><Link href="/#categories" className="hover:text-white">Use cases</Link><Link href="/compare" className="hover:text-white">Compare</Link><Link href="/guides" className="hover:text-white">Guides</Link><Link href="/sponsor" className="hover:text-white">Sponsor</Link></nav>
       </header>
       <main className="mx-auto max-w-6xl px-5 pb-20">{children}</main>
-      <footer className="border-t border-white/10 py-8 text-center text-sm text-gray-500">© {new Date().getFullYear()} {SITE.name} · <Link href="/sponsor">Advertise</Link> · <a href="/llms.txt">llms.txt</a></footer>
+      <footer className="border-t border-white/10 py-8 text-center text-sm text-gray-500">© {new Date().getFullYear()} {SITE.name} · <Link href="/sponsor">Advertise</Link> · <Link href="/new">New tools</Link> · <a href="/feed.xml">RSS</a> · <a href="/llms.txt">llms.txt</a></footer>
     <Analytics /></body></html>
   );
 }

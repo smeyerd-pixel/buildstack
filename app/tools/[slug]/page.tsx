@@ -26,7 +26,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <dl className="grid gap-3 text-sm sm:grid-cols-3">
           <div><dt className="text-gray-500">Pricing</dt><dd>{t.pricing}</dd></div>
           <div><dt className="text-gray-500">Use cases</dt><dd className="flex flex-wrap gap-1.5">{t.categories.map((c) => <Link key={c} className="chip" href={`/use-case/${c}`}>{getCategory(c)?.name}</Link>)}</dd></div>
-          <div><dt className="text-gray-500">Added</dt><dd>{t.added}</dd></div>
+          <div><dt className="text-gray-500">Added</dt><dd><Link href={`/new#${t.added}`} className="hover:text-white hover:underline">{t.added}</Link> · <Link href="/new" className="text-cyan-400 hover:underline">more new tools</Link></dd></div>
         </dl>
         <a href={t.url} target="_blank" rel="noopener" className="btn">Visit {t.name} ↗</a>
         {comps.length > 0 && (

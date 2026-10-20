@@ -3,9 +3,11 @@ import { tools, categories } from "@/lib/data";
 import { comparisons } from "@/data/comparisons";
 import { SITE } from "@/lib/config";
 import { allR32Slugs } from "@/lib/madness";
+import { latestAddedDate } from "@/lib/newTools";
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: SITE.url, changeFrequency: "daily", priority: 1 },
+    { url: `${SITE.url}/new`, changeFrequency: "daily", priority: 0.9, lastModified: latestAddedDate() },
     { url: `${SITE.url}/sponsor` },
     { url: `${SITE.url}/guides` },
     { url: `${SITE.url}/guides/use-a-github-repo`, lastModified: "2026-10-16", priority: 0.8 },

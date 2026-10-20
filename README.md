@@ -8,3 +8,6 @@ AI tools directory (Next.js). Add tools by appending to data/tools.ts. Config (s
 
 ## Comparisons
 - Facts per tool: `data/toolFacts.ts`. Pairs + human analysis: `data/comparisons.ts`. Template: `app/compare/[slug]/page.tsx` (facts table, FAQ schema, related links).
+
+## New tools feed
+- `/new` lists every tool grouped by `added` date (newest first) and `/feed.xml` is the RSS feed; both are generated from `data/tools.ts` via `lib/newTools.ts`.
