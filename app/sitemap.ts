@@ -4,13 +4,14 @@ import { comparisons } from "@/data/comparisons";
 import { SITE } from "@/lib/config";
 import { allR32Slugs } from "@/lib/madness";
 import { latestAddedDate } from "@/lib/newTools";
+import { guides } from "@/lib/guides";
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: SITE.url, changeFrequency: "daily", priority: 1 },
     { url: `${SITE.url}/new`, changeFrequency: "daily", priority: 0.9, lastModified: latestAddedDate() },
     { url: `${SITE.url}/sponsor` },
     { url: `${SITE.url}/guides` },
-    { url: `${SITE.url}/guides/use-a-github-repo`, lastModified: "2026-10-16", priority: 0.8 },
+    ...guides.map((g) => ({ url: `${SITE.url}/guides/${g.slug}`, lastModified: g.date, priority: 0.8 })),
     { url: `${SITE.url}/madness`, changeFrequency: "daily", priority: 0.9, lastModified: "2026-10-19" },
     ...allR32Slugs().map((s) => ({ url: `${SITE.url}/madness/${s}`, changeFrequency: "daily" as const, priority: 0.6, lastModified: "2026-10-19" })),
     { url: `${SITE.url}/top100`, changeFrequency: "weekly", priority: 0.9 },

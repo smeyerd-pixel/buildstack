@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE } from "@/lib/config";
-import { guides } from "@/lib/guides";
+import { getGuide } from "@/lib/guides";
 import GuideGate from "@/components/GuideGate";
-const g = guides[0];
+const g = getGuide("use-a-github-repo")!;
 const url = `${SITE.url}/guides/${g.slug}`;
 export const metadata: Metadata = { title: g.title, description: g.description, alternates: { canonical: url }, openGraph: { title: g.title, description: g.description, url, type: "article" } };
 const steps = [

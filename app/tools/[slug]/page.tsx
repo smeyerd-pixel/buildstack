@@ -5,6 +5,7 @@ import ToolCard from "@/components/ToolCard";
 import { tools, getTool, getCategory, toolsIn } from "@/lib/data";
 import { comparisonsForTool } from "@/data/comparisons";
 import { SITE } from "@/lib/config";
+import { guidesForTool } from "@/lib/guides";
 export const generateStaticParams = () => tools.map((t) => ({ slug: t.slug }));
 export const dynamicParams = false;
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -16,6 +17,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   const t = getTool((await params).slug); if (!t) notFound();
   const alts = toolsIn(t.categories[0]).filter((x) => x.slug !== t.slug).slice(0, 3);
   const comps = comparisonsForTool(t.slug);
+  const tg = guidesForTool(t.slug);
   const ld = { "@context": "https://schema.org", "@type": "SoftwareApplication", name: t.name, url: t.url, applicationCategory: getCategory(t.categories[0])?.name, description: t.verdict, offers: { "@type": "Offer", description: t.pricing } };
   return (
     <div className="space-y-8 pt-6">
@@ -34,6 +36,15 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
             {comps.map((cmp) => (
               <Link key={cmp.slug} href={`/compare/${cmp.slug}`} className="text-cyan-400 hover:underline">
                 {cmp.title} →
+              </Link>
+            ))}
+          </div>
+        )}
+        {tg.length > 0 && (
+          <div className="flex flex-wrap gap-2 pt-1 text-sm">
+            {tg.map((g) => (
+              <Link key={g.slug} href={`/guides/${g.slug}`} className="text-cyan-400 hover:underline">
+                Guide: {g.title} →
               </Link>
             ))}
           </div>
