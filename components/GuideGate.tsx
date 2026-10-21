@@ -14,7 +14,7 @@ export default function GuideGate({ pdf }: { pdf: string }) {
       {ok ? (<div className="mt-2 space-y-2"><p className="text-sm text-cyan-300">You&apos;re in! Here&apos;s your guide:</p><a href={pdf} download className="btn">Download the PDF</a></div>) : (<>
         <p className="mb-3 text-sm text-gray-400">A printable copy of this guide. You&apos;ll also get our newsletter on new AI tools for builders. Unsubscribe anytime.</p>
         <form onSubmit={submit} className="flex flex-col gap-2 sm:flex-row">
-          <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@example.com" className="flex-1 rounded-xl border border-white/10 bg-black/40 px-4 py-2 outline-none focus:border-violet-400" />
+          <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@yourdomain.com" className="flex-1 rounded-xl border border-white/10 bg-black/40 px-4 py-2 outline-none focus:border-violet-400" />
           <button disabled={busy} className="btn">{busy ? "..." : "Send me the PDF"}</button>
         </form>{msg && <p className="mt-2 text-sm text-rose-300">{msg}</p>}</>)}
     </div>

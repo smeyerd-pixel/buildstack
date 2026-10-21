@@ -8,7 +8,7 @@ import { comparisons } from "@/data/comparisons";
 import { allComparisonViews } from "@/lib/compare";
 import { SITE } from "@/lib/config";
 export default function Home() {
-  const ld = { "@context": "https://schema.org", "@type": "WebSite", name: SITE.name, url: SITE.url, description: SITE.tagline };
+  const ld = { "@context": "https://schema.org", "@type": "WebSite", name: SITE.name, url: SITE.url, description: SITE.tagline, publisher: { "@type": "Organization", name: SITE.name, url: SITE.url, email: SITE.contactEmail } };
   return (
     <div className="space-y-14">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />

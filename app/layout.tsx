@@ -2,7 +2,7 @@ import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
-import { SITE } from "@/lib/config";
+import { SITE, mailto } from "@/lib/config";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: { default: `${SITE.name} – ${SITE.tagline}`, template: `%s | ${SITE.name}` },
@@ -19,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <nav className="flex flex-wrap justify-end gap-x-5 gap-y-1 text-sm text-gray-400"><Link href="/madness" className="font-medium text-violet-300 hover:text-white">AI Madness</Link><Link href="/top100" className="hover:text-white">Top 100</Link><Link href="/#categories" className="hover:text-white">Use cases</Link><Link href="/compare" className="hover:text-white">Compare</Link><Link href="/guides" className="hover:text-white">Guides</Link><Link href="/sponsor" className="hover:text-white">Sponsor</Link></nav>
       </header>
       <main className="mx-auto max-w-6xl px-5 pb-20">{children}</main>
-      <footer className="border-t border-white/10 py-8 text-center text-sm text-gray-500">© {new Date().getFullYear()} {SITE.name} · <Link href="/sponsor">Advertise</Link> · <Link href="/new">New tools</Link> · <a href="/feed.xml">RSS</a> · <a href="/llms.txt">llms.txt</a></footer>
+      <footer className="border-t border-white/10 py-8 text-center text-sm text-gray-500">© {new Date().getFullYear()} {SITE.name} · <Link href="/sponsor">Advertise</Link> · <Link href="/new">New tools</Link> · <a href="/feed.xml">RSS</a> · <a href="/llms.txt">llms.txt</a> · <a href={mailto("Hello from BuildStack")}>Contact</a></footer>
     <Analytics /></body></html>
   );
 }

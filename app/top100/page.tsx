@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SITE } from "@/lib/config";
+import { SITE, mailto } from "@/lib/config";
 import chart from "@/data/top100/latest.json";
 
 type Entry = { rank: number; prev_rank: number | null; is_new: boolean; name: string; full_name: string; url: string; description: string; stars: number; star_delta: number | null; category: string; npm?: { package: string; weekly_downloads: number } };
@@ -70,7 +70,7 @@ export default async function Top100({ searchParams }: { searchParams: Promise<{
           </div>
           <div className="text-right text-sm"><div className="text-white">★ {fmt(e.stars)}</div>{e.npm && <div className="text-xs text-gray-500">{fmt(e.npm.weekly_downloads)} npm/wk</div>}</div>
         </li>))}</ol>
-      <p className="text-xs text-gray-500">Source: {chart.source}. Snapshot {chart.generated_at.slice(0, 10)} from {chart.candidates} candidate repos tagged mcp-server, model-context-protocol, mcp, claude-skills, agent-skills or claude-code. Scoring: stars (log), weekly star gain, and recent commits. Missing something? <a href={`mailto:${SITE.contactEmail}?subject=Top 100 submission`} className="underline">Tell us</a>.</p>
+      <p className="text-xs text-gray-500">Source: {chart.source}. Snapshot {chart.generated_at.slice(0, 10)} from {chart.candidates} candidate repos tagged mcp-server, model-context-protocol, mcp, claude-skills, agent-skills or claude-code. Scoring: stars (log), weekly star gain, and recent commits. Missing something? <a href={mailto("Top 100 suggestion")} className="underline">Tell us</a>.</p>
     </div>
   );
 }

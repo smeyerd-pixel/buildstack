@@ -5,7 +5,7 @@ import Newsletter from "@/components/Newsletter";
 import { ROUNDS, TZ_LABEL, formatCR, nextEvent, pct, type Matchup } from "@/lib/madness";
 import { loadBracket } from "@/lib/madnessData";
 import { entrants, getEntrant, MENTION_POINTS, SEEDING_SNAPSHOT } from "@/data/madness";
-import { SITE } from "@/lib/config";
+import { SITE, mailto } from "@/lib/config";
 
 export const revalidate = 30;
 
@@ -71,7 +71,7 @@ export default async function MadnessPage() {
     eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
     eventStatus: "https://schema.org/EventScheduled",
     location: { "@type": "VirtualLocation", url: `${SITE.url}/madness` },
-    organizer: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    organizer: { "@type": "Organization", name: SITE.name, url: SITE.url, email: SITE.contactEmail },
   };
 
   return (
@@ -185,6 +185,9 @@ export default async function MadnessPage() {
         </div>
         <p className="mt-3 text-sm text-gray-400">
           Want the details before you vote? Every first-round matchup has a full side-by-side on our <Link href="/compare" className="text-cyan-400 hover:underline">comparison pages</Link>.
+        </p>
+        <p className="mt-2 text-sm text-gray-400">
+          Think a tool got the wrong seed, or want to sponsor the bracket? <a href={mailto("AI Madness")} className="text-cyan-400 hover:underline">Email us</a>.
         </p>
       </section>
     </div>
