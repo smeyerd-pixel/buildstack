@@ -3,6 +3,7 @@ export type Guide = { slug: string; title: string; description: string; date: st
 export const guides: Guide[] = [
   { slug: "use-a-github-repo", title: "How to use someone else's GitHub repo (a plain-English guide for beginners)", description: "What a GitHub repo is, the 3 ways people actually use them, a real walkthrough installing Anthropic's skills into Claude Code, and how to tell if a repo is safe to trust.", date: "2026-10-16", tools: ["claude-code"] },
   { slug: "check-ai-code-before-you-ship", title: "How to check AI-written code before you ship it (a vibe coder's checklist)", description: "Your AI agent says \"done.\" A 6-step, plain-English checklist to prove it works and understand what it changed before you push, with free tools like Reticle and Sphinx.", date: "2026-10-21", tools: ["reticle", "sphinx", "claude-code", "cursor", "openai-codex", "devin", "github-copilot"] },
+  { slug: "run-ai-coding-agents-in-parallel", title: "How to run several AI coding agents at once without them breaking each other's work", description: "A beginner-friendly guide to parallel AI coding: what a git worktree is, the 5-step routine, and free tools like Orca for running Claude Code, Codex and other agents side by side.", date: "2026-10-22", tools: ["orca", "claude-code", "openai-codex", "opencode", "grok-build", "devin", "heal", "reticle"] },
 ];
 export const getGuide = (slug: string) => guides.find((g) => g.slug === slug);
 export const guidesForTool = (slug: string) => guides.filter((g) => g.tools?.includes(slug));
