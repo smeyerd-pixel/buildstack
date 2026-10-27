@@ -80,7 +80,27 @@ async function pool<T, R>(items: T[], n: number, fn: (t: T) => Promise<R>): Prom
 
 export type CountsResult = { counts: Record<string, { a: number; b: number }>; backend: Backend; degraded: boolean };
 
+// During `next build`, every /madness page reads the same counts. Share one in-flight read per build worker
+// so prerendering ~40 pages doesn't fire hundreds of Abacus requests and trip its 30 req / 10s limit.
+const IS_BUILD = process.env.NEXT_PHASE === "phase-production-build";
+const gb = globalThis as unknown as { __bsBuildCounts?: Map<string, Promise<CountsResult>> };
+const buildCounts = (gb.__bsBuildCounts ??= new Map<string, Promise<CountsResult>>());
+
 export async function getCounts(ids: string[], now = nowMs()): Promise<CountsResult> {
+  if (!IS_BUILD || ids.length === 0) return readCounts(ids, now);
+  const key = ids.join(",");
+  let p = buildCounts.get(key);
+  if (!p) {
+    p = readCounts(ids, now).then((r) => {
+      if (r.degraded) buildCounts.delete(key); // don't reuse a failed read
+      return r;
+    });
+    buildCounts.set(key, p);
+  }
+  return p;
+}
+
+async function readCounts(ids: string[], now: number): Promise<CountsResult> {
   const counts: Record<string, { a: number; b: number }> = {};
   if (ids.length === 0) return { counts, backend: configuredBackend(), degraded: false };
   const keys = ids.flatMap((id) => [voteKey(id, "a"), voteKey(id, "b")]);
