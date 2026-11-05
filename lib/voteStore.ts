@@ -57,6 +57,11 @@ async function abacus(path: string, init: RequestInit & { next?: { revalidate: n
       await sleep(Math.min(wait, 10000) + 150);
       continue;
     }
+    if (r.status >= 500) {
+      // Abacus occasionally 500s under load; back off and retry like a rate limit.
+      await sleep(Math.min(500 * (i + 1), 3000));
+      continue;
+    }
     if (!r.ok) throw new Error(`abacus ${r.status}`);
     const j = (await r.json()) as { value?: number };
     return Number(j.value ?? 0);
@@ -92,7 +97,8 @@ export async function getCounts(ids: string[], now = nowMs()): Promise<CountsRes
   let p = buildCounts.get(key);
   if (!p) {
     p = readCounts(ids, now).then((r) => {
-      if (r.degraded) buildCounts.delete(key); // don't reuse a failed read
+      // Keep a degraded result cached for the rest of this build so one Abacus outage
+      // doesn't turn into N retries across /madness pages. Runtime (non-build) never hits this map.
       return r;
     });
     buildCounts.set(key, p);
@@ -111,7 +117,8 @@ async function readCounts(ids: string[], now: number): Promise<CountsResult> {
       values = (res as (string | null)[]).map((v) => Number(v ?? 0));
     } else {
       const closed = finalIds(now);
-      values = await pool(keys, 4, (k) => {
+      const concurrency = IS_BUILD ? 1 : 4;
+      values = await pool(keys, concurrency, (k) => {
         const id = k.slice(2, -2);
         const isFinal = closed.has(id);
         // Closed rounds can't change, so cache them for a day under a separate cache key.

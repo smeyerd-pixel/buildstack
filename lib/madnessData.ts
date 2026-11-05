@@ -7,6 +7,9 @@ import { getCounts } from "@/lib/voteStore";
  */
 export async function loadBracket(now = nowMs(), strict = false) {
   const { counts, backend, degraded } = await getCounts(startedIds(now), now);
-  if (strict && degraded) throw new Error("vote store unavailable");
+  // During `next build`, never fail the whole site deploy if Abacus/Upstash is down —
+  // ship the bracket with memory zeros; runtime ISR still uses strict to avoid caching a bad crown.
+  const isBuild = process.env.NEXT_PHASE === "phase-production-build";
+  if (strict && degraded && !isBuild) throw new Error("vote store unavailable");
   return { bracket: buildBracket(counts, now), backend, degraded, now };
 }
