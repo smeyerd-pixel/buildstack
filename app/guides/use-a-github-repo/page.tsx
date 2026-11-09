@@ -61,6 +61,7 @@ export default function Guide() {
         <li><b>Issues tab</b>: are people reporting problems, and does anyone answer?</li>
         <li><b>Read what it will run.</b> Be extra careful with anything that asks for passwords or API keys, or tells you to paste a long command starting with <code>curl ... | bash</code>.</li>
       </ul>
+      <p>Got a repo from a stranger, like a take-home assignment or a &quot;demo app&quot;? Stars won&apos;t help there. Scan it first: see <Link className="underline" href="/guides/check-a-repo-before-you-run-it">how to check a repo before you or your AI agent run it</Link>.</p>
 
       <H2>Quick recap</H2>
       <ul className="list-disc space-y-1 pl-6"><li>A repo is a project folder on GitHub. The README is the manual.</li><li>Use it by downloading/cloning, installing it as an add-on, or handing the link to an AI agent.</li><li>Check owner, stars, last commit, and license before you trust it.</li></ul>
