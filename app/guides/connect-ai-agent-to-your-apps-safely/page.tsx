@@ -67,7 +67,7 @@ export default function Guide() {
 
       <H2>Quick recap</H2>
       <ul className="list-disc space-y-1 pl-6"><li>Connect with OAuth sign-ins, never passwords or pasted cookies.</li><li>Grant the smallest scopes and the shortest tool list; start read-only.</li><li>Keep tokens out of code and chat, log every action, and know where the revoke button is.</li></ul>
-      <p className="text-sm text-gray-500">Related: <Link className="underline" href="/guides/stop-ai-agent-deleting-your-database">stop your AI agent deleting your database</Link> and <Link className="underline" href="/guides/run-ai-coding-agents-in-a-sandbox">run your coding agent in a sandbox</Link>. More tools: <Link className="underline" href="/use-case/automation-agents">AI automation and agent tools</Link> and <Link className="underline" href="/new">the newest AI tools</Link>.</p>
+      <p className="text-sm text-gray-500">Related: <Link className="underline" href="/guides/stop-ai-agent-deleting-your-database">stop your AI agent deleting your database</Link>, <Link className="underline" href="/guides/run-ai-coding-agents-in-a-sandbox">run your coding agent in a sandbox</Link>, and <Link className="underline" href="/guides/add-mcp-servers-to-claude-code-and-codex">add MCP servers to Claude Code and Codex</Link>. More tools: <Link className="underline" href="/use-case/automation-agents">AI automation and agent tools</Link> and <Link className="underline" href="/new">the newest AI tools</Link>.</p>
     </article>
   );
 }
