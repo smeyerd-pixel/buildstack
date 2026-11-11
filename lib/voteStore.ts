@@ -47,7 +47,14 @@ async function redis(commands: (string | number)[][]): Promise<unknown[]> {
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 async function abacus(path: string, init: RequestInit & { next?: { revalidate: number } }, tries = 5): Promise<number> {
   for (let i = 0; i < tries; i++) {
-    const r = await fetch(`${ABACUS}${path}`, init);
+    // Abacus can get very slow (multi-second responses); don't let one request hang a build or a page.
+    let r: Response;
+    try {
+      r = await fetch(`${ABACUS}${path}`, { ...init, signal: AbortSignal.timeout(IS_BUILD ? 4000 : 8000) });
+    } catch (e) {
+      if (i === tries - 1) throw e;
+      continue;
+    }
     if (r.status === 404) return 0;
     if (r.status === 429) {
       // Abacus allows 30 requests / 10s per IP. Wait as long as it asks (seconds or ms), capped at 4s.
@@ -88,6 +95,7 @@ export type CountsResult = { counts: Record<string, { a: number; b: number }>; b
 // During `next build`, every /madness page reads the same counts. Share one in-flight read per build worker
 // so prerendering ~40 pages doesn't fire hundreds of Abacus requests and trip its 30 req / 10s limit.
 const IS_BUILD = process.env.NEXT_PHASE === "phase-production-build";
+const BUILD_READ_BUDGET_MS = 25000;
 const gb = globalThis as unknown as { __bsBuildCounts?: Map<string, Promise<CountsResult>> };
 const buildCounts = (gb.__bsBuildCounts ??= new Map<string, Promise<CountsResult>>());
 
@@ -118,12 +126,17 @@ async function readCounts(ids: string[], now: number): Promise<CountsResult> {
     } else {
       const closed = finalIds(now);
       const concurrency = IS_BUILD ? 1 : 4;
-      values = await pool(keys, concurrency, (k) => {
+      const read = pool(keys, concurrency, (k) => {
         const id = k.slice(2, -2);
         const isFinal = closed.has(id);
         // Closed rounds can't change, so cache them for a day under a separate cache key.
         return abacus(`/get/${NS}/${k}${isFinal ? "?final=1" : ""}`, { next: { revalidate: isFinal ? 86400 : 20 } });
       });
+      // During `next build`, cap the whole read well under Next's 60s per-page static generation timeout:
+      // a slow Abacus then ships degraded counts (fixed by ISR within 30s) instead of failing the deploy.
+      values = IS_BUILD
+        ? await Promise.race([read, sleep(BUILD_READ_BUDGET_MS).then((): never => { throw new Error("abacus build read budget exceeded"); })])
+        : await read;
     }
     ids.forEach((id, i) => (counts[id] = { a: values[2 * i] || 0, b: values[2 * i + 1] || 0 }));
     return { counts, backend: configuredBackend(), degraded: false };
