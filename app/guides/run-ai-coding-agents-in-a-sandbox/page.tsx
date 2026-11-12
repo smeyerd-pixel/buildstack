@@ -51,6 +51,7 @@ export default function Guide() {
       <ul className="list-disc space-y-1 pl-6">
         <li>Keep prompts on for anything that touches money, production data or deployments.</li>
         <li>Give the agent its own git worktree or folder so it can&apos;t trample your main copy (see our guide to <Link className="underline" href="/guides/run-ai-coding-agents-in-parallel">running several agents at once</Link>).</li>
+        <li>If your app uses AWS, point the agent at a free local copy of AWS instead of your real account (see our guide to <Link className="underline" href="/guides/test-aws-code-locally-with-your-ai-agent">testing AWS code locally with AWS Emulator</Link>).</li>
         <li>For agents that act on real systems, an approval layer like <T s="withhuman">withHuman</T> auto-approves routine actions and sends risky ones to a person.</li>
         <li>Before merging, a tool like <T s="farol">farol</T> tells you how risky an agent-written pull request is.</li>
       </ul>
