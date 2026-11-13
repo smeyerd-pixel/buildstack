@@ -65,7 +65,7 @@ export default function Guide() {
 
       <H2>Quick recap</H2>
       <ul className="list-disc space-y-1 pl-6"><li>An MCP server gives your agent new tools; add only the ones you&apos;ll use.</li><li>Test it before your agent depends on it, and install it for one project or all of them on purpose.</li><li>Keep tokens in your keychain or behind OAuth, never in a plain-text config file, and prune servers you stop using.</li></ul>
-      <p className="text-sm text-gray-500">Related: <Link className="underline" href="/guides/use-a-github-repo">how to use someone else&apos;s GitHub repo</Link>, <Link className="underline" href="/guides/check-a-repo-before-you-run-it">check a repo before you run it</Link>, and <Link className="underline" href="/guides/run-ai-coding-agents-in-a-sandbox">run your agent in a sandbox</Link>. More tools: <Link className="underline" href="/use-case/coding-agents">coding agents</Link> and <Link className="underline" href="/new">newest AI tools</Link>.</p>
+      <p className="text-sm text-gray-500">Related: <Link className="underline" href="/guides/use-a-github-repo">how to use someone else&apos;s GitHub repo</Link>, <Link className="underline" href="/guides/check-a-repo-before-you-run-it">check a repo before you run it</Link>, <Link className="underline" href="/guides/run-ai-coding-agents-in-a-sandbox">run your agent in a sandbox</Link>, and <Link className="underline" href="/guides/cut-your-ai-agent-token-bill">cut your agent&apos;s token bill</Link>. More tools: <Link className="underline" href="/use-case/coding-agents">coding agents</Link> and <Link className="underline" href="/new">newest AI tools</Link>.</p>
     </article>
   );
 }
