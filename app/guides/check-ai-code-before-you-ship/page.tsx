@@ -75,7 +75,7 @@ export default function Guide() {
 
       <H2>Quick recap</H2>
       <ul className="list-disc space-y-1 pl-6"><li>Plan first, then make the agent run typecheck, lint, tests and build.</li><li>Prove the feature works in the running app, by hand or with Reticle.</li><li>Skim the diff summary, get a second AI review, and make sure you understand the change (Sphinx can quiz you).</li></ul>
-      <p className="text-sm text-gray-500">Picking an agent? See our <Link className="underline" href="/use-case/coding-agents">best AI coding agents</Link>, <Link className="underline" href="/compare">side-by-side comparisons</Link>, or <Link className="underline" href="/new">the newest AI tools</Link>.</p>
+      <p className="text-sm text-gray-500">App built on Supabase (Lovable, Bolt, Base44)? Also run our <Link className="underline" href="/guides/check-your-lovable-app-for-data-leaks">15-minute check for user-data leaks</Link>. Picking an agent? See our <Link className="underline" href="/use-case/coding-agents">best AI coding agents</Link>, <Link className="underline" href="/compare">side-by-side comparisons</Link>, or <Link className="underline" href="/new">the newest AI tools</Link>.</p>
     </article>
   );
 }
