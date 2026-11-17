@@ -67,7 +67,7 @@ export default function Guide() {
 
       <H2>Quick recap</H2>
       <ul className="list-disc space-y-1 pl-6"><li>Spare device or cloud/self-hosted session — never your main phone and number.</li><li>You take over for logins and irreversible actions; stop sessions when idle.</li><li>Keep phone/browser tools separate from unsupervised spend/send/deploy tools.</li></ul>
-      <p className="text-sm text-gray-500">Related: <Link className="underline" href="/guides/connect-ai-agent-to-your-apps-safely">connect apps with OAuth</Link>, <Link className="underline" href="/guides/run-ai-coding-agents-in-a-sandbox">sandbox your coding agent</Link>, and <Link className="underline" href="/guides/stop-ai-agent-deleting-your-database">stop agents deleting your database</Link>. More tools: <Link className="underline" href="/use-case/automation-agents">automation &amp; agents</Link> and <Link className="underline" href="/new">newest AI tools</Link>.</p>
+      <p className="text-sm text-gray-500">Related: <Link className="underline" href="/guides/let-your-ai-agent-test-your-app-in-your-browser">let your agent test your app in your real browser</Link>, <Link className="underline" href="/guides/connect-ai-agent-to-your-apps-safely">connect apps with OAuth</Link>, <Link className="underline" href="/guides/run-ai-coding-agents-in-a-sandbox">sandbox your coding agent</Link>, and <Link className="underline" href="/guides/stop-ai-agent-deleting-your-database">stop agents deleting your database</Link>. More tools: <Link className="underline" href="/use-case/automation-agents">automation &amp; agents</Link> and <Link className="underline" href="/new">newest AI tools</Link>.</p>
     </article>
   );
 }
