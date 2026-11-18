@@ -70,7 +70,7 @@ export default function Guide() {
 
       <H2>Quick recap</H2>
       <ul className="list-disc space-y-1 pl-6"><li>Code moves with git; the conversation needs a handoff.</li><li>Commit first, then use Agent Archive or a HANDOFF.md note.</li><li>To avoid switching altogether, use a model-agnostic agent like Cusp or OpenCode.</li></ul>
-      <p className="text-sm text-gray-500">Picking an agent? See our <Link className="underline" href="/use-case/coding-agents">best AI coding agents</Link>, <Link className="underline" href="/compare">side-by-side comparisons</Link>, or <Link className="underline" href="/new">the newest AI tools</Link>.</p>
+      <p className="text-sm text-gray-500">Not sure which model to switch to? See <Link className="underline" href="/guides/pick-an-ai-model-for-your-coding-agent">which AI model your coding agent should use</Link>. Picking an agent? See our <Link className="underline" href="/use-case/coding-agents">best AI coding agents</Link>, <Link className="underline" href="/compare">side-by-side comparisons</Link>, or <Link className="underline" href="/new">the newest AI tools</Link>.</p>
     </article>
   );
 }
