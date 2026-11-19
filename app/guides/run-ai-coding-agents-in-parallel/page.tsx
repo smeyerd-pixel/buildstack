@@ -61,7 +61,7 @@ export default function Guide() {
       <p>You don&apos;t have to run everything on your laptop. <T s="openai-codex">OpenAI Codex</T> and <T s="devin">Devin</T> can take whole tasks in the cloud, and <T s="grok-build">Grok Build</T> splits a job across parallel subagents after you approve its plan. These are handy when your computer is off or the tasks are long.</p>
 
       <H2>Check every result before you merge</H2>
-      <p>More agents means more code you didn&apos;t write. Use the same checks for every branch: typecheck, build, a real click-through (or <T s="reticle">Reticle</T>), and a diff summary you understand. Our <Link className="underline" href="/guides/check-ai-code-before-you-ship">checklist for AI-written code</Link> walks through it. Before a bigger release, <T s="heal">Heal</T> can run your whole app in a sandbox and report only bugs it can reproduce, each with a failing test.</p>
+      <p>More agents means more code you didn&apos;t write. Use the same checks for every branch: typecheck, build, a real click-through (or <T s="reticle">Reticle</T>), and a diff summary you understand. Our <Link className="underline" href="/guides/check-ai-code-before-you-ship">checklist for AI-written code</Link> walks through it. Before a bigger release, <T s="heal">Heal</T> can run your whole app in a sandbox and report only bugs it can reproduce, each with a failing test. If agent PRs start piling up behind slow checks, see <Link className="underline" href="/guides/speed-up-github-actions-for-ai-agent-prs">how to speed up (and secure) GitHub Actions for agent PRs</Link>.</p>
 
       {featured.length > 0 && <><H2>Tools in this guide</H2><div className="grid gap-4 sm:grid-cols-2">{featured.map((t) => <ToolCard key={t.slug} tool={t} />)}</div></>}
 

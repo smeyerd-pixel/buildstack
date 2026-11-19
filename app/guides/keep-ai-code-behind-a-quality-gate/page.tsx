@@ -71,7 +71,7 @@ export default function Guide() {
 
       <H2>Quick recap</H2>
       <ul className="list-disc space-y-1 pl-6"><li>Name the checks before the agent runs; re-test the final diff.</li><li>Reviews and approvals must be able to block — fail closed on errors.</li><li>Gate tool calls during the run and the merge at the end.</li></ul>
-      <p className="text-sm text-gray-500">Related: <Link className="underline" href="/guides/check-ai-code-before-you-ship">check AI code before you ship</Link>, <Link className="underline" href="/guides/run-ai-coding-agents-in-a-sandbox">sandbox your coding agent</Link>, and <Link className="underline" href="/guides/stop-ai-agent-deleting-your-database">stop agents deleting your database</Link>. More tools: <Link className="underline" href="/use-case/coding-agents">coding agents</Link> and <Link className="underline" href="/new">newest AI tools</Link>.</p>
+      <p className="text-sm text-gray-500">Related: <Link className="underline" href="/guides/speed-up-github-actions-for-ai-agent-prs">speed up (and secure) GitHub Actions for agent PRs</Link>, <Link className="underline" href="/guides/check-ai-code-before-you-ship">check AI code before you ship</Link>, <Link className="underline" href="/guides/run-ai-coding-agents-in-a-sandbox">sandbox your coding agent</Link>, and <Link className="underline" href="/guides/stop-ai-agent-deleting-your-database">stop agents deleting your database</Link>. More tools: <Link className="underline" href="/use-case/coding-agents">coding agents</Link> and <Link className="underline" href="/new">newest AI tools</Link>.</p>
     </article>
   );
 }

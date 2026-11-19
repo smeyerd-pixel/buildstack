@@ -29,6 +29,7 @@ const rows: [string, string, string, string][] = [
   ["MAI Code 2", "mai-code-2", "$0.50 / $2.50 (promo until May 17, 2027)", "Everyday coding in GitHub Copilot"],
   ["Qwen4-Max", "qwen4-max", "$1.50 / $4.50", "Big codebases on a budget (1M-token context)"],
   ["GPT-6.2 Sol", "gpt-6-2-astra-sol", "$2 / $10", "Everyday default in Codex and ChatGPT"],
+  ["Gemini 4 Neon (added Nov 19)", "gemini-4-neon", "$3 / $15", "Complex coding in Google Antigravity or the Gemini API (1M-token context)"],
   ["GPT-6.2 Astra", "gpt-6-2-astra-sol", "$8 / $40", "Hard jobs: big refactors, stubborn bugs, polished frontends"],
   ["Edge0-145B", "edge0-145b", "Free (runs on your machine)", "Private, offline coding on a ~48 GB laptop"],
 ];
@@ -44,7 +45,7 @@ export default function Guide() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Link href="/guides" className="text-sm text-gray-500">← Guides</Link>
       <h1 className="text-4xl font-bold text-white">Which AI model should your coding agent use? A beginner&apos;s pick-by-job guide (November 2026)</h1>
-      <p className="text-lg text-gray-400">A plain-English guide for vibe coders using Codex, GitHub Copilot or any agent that lets you pick a model. About a 6-minute read. Updated November 18, 2026.</p>
+      <p className="text-lg text-gray-400">A plain-English guide for vibe coders using Codex, GitHub Copilot or any agent that lets you pick a model. About a 6-minute read. Updated November 19, 2026.</p>
       <p>This week alone brought three big launches: OpenAI&apos;s <T s="gpt-6-2-astra-sol">GPT-6.2 Astra and Sol</T> and Microsoft&apos;s <T s="mai-code-2">MAI Code 2 and MAI Code 2 Flash</T> (both November 17), and Alibaba&apos;s <T s="qwen4-max">Qwen4-Max</T> (November 16). Every announcement says its model is the best value. You don&apos;t need to follow the leaderboard. You need a cheap default for everyday work, a bigger model for the hard jobs, and a habit of checking what each task actually costs. Here&apos;s a 5-step routine.</p>
 
       <H2>The 5-step routine</H2>
@@ -54,7 +55,7 @@ export default function Guide() {
       <p>Prices are per 1 million tokens (input / output) at standard API rates, or GitHub Copilot AI-credit rates for the MAI models. A million tokens is roughly 750,000 words; a typical small coding task uses a fraction of that, but long agent sessions add up fast.</p>
       <div className="overflow-x-auto"><table className="w-full text-left text-sm"><thead><tr className="border-b border-white/10 text-white"><th className="py-2 pr-4">Model</th><th className="py-2 pr-4">Price (in / out)</th><th className="py-2">Best for</th></tr></thead>
         <tbody>{rows.map(([n, s, p, b]) => <tr key={n} className="border-b border-white/5"><td className="py-2 pr-4"><T s={s}>{n}</T></td><td className="py-2 pr-4">{p}</td><td className="py-2">{b}</td></tr>)}</tbody></table></div>
-      <p className="text-sm text-gray-500">Sources: OpenAI&apos;s GPT-6.2 announcement, GitHub&apos;s Copilot models and pricing page, Alibaba&apos;s Qwen4-Max model page and Edge0&apos;s launch post. Benchmark claims below are the makers&apos; own numbers.</p>
+      <p className="text-sm text-gray-500">Sources: OpenAI&apos;s GPT-6.2 announcement, GitHub&apos;s Copilot models and pricing page, Alibaba&apos;s Qwen4-Max model page, Google&apos;s Gemini 4 Neon announcement (November 18) and Edge0&apos;s launch post. Benchmark claims below are the makers&apos; own numbers.</p>
 
       <H2 id="plan">Step 1: Start with what your plan already includes</H2>
       <p>If you pay for ChatGPT (Plus, Pro, Enterprise or Edu), GPT-6.2 Sol and Astra are already in <T s="openai-codex">Codex</T> as of November 17. If you use <T s="github-copilot">GitHub Copilot</T>, MAI Code 2 Flash is on every plan including Free, and MAI Code 2 is on Pro, Pro+, Max, Business and Enterprise. Pick them from the model picker in VS Code, Copilot CLI, JetBrains, Xcode or github.com. In Codex, type <code>/model</code> in a session, or start it with a model name:</p>
