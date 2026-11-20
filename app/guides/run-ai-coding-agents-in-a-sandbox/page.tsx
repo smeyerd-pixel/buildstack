@@ -30,7 +30,7 @@ export default function Guide() {
       tool: ["Git", "Mudroom", "Claude Code"].map((name) => ({ "@type": "HowToTool", name })), step: steps.map((s, i) => ({ "@type": "HowToStep", position: i + 1, name: s.name, text: s.text })) },
     { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) },
   ];
-  const featured = ["mudroom", "claude-code", "withhuman", "farol"].map(getTool).filter((t) => t !== undefined);
+  const featured = ["mudroom", "claude-code", "withhuman", "farol", "dynocap"].map(getTool).filter((t) => t !== undefined);
   return (
     <article className="mx-auto max-w-3xl space-y-4 pt-6 leading-relaxed text-gray-300">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
@@ -63,6 +63,7 @@ export default function Guide() {
 
       <H2>Quick recap</H2>
       <ul className="list-disc space-y-1 pl-6"><li>Commit first and move real secrets out of the project.</li><li>Run the agent on a copy in a sandbox with only the internet it needs.</li><li>Review the diff like a pull request and apply only what you understand.</li></ul>
+      <p>On an Apple Silicon Mac and want a throwaway Linux machine instead of a container? <Link className="underline" href="/tools/dynocap">DynoCap</Link> (open source) clones your project into an offline-by-default sandbox, runs your agent&apos;s commands there and shows you the diff. Setting up a database and login next? See <Link className="underline" href="/guides/let-your-ai-agent-set-up-your-app-backend">how to let your agent set up your app&apos;s backend safely</Link>.</p>
       <p className="text-sm text-gray-500">Changes applied? Before you ship, use our <Link className="underline" href="/guides/check-ai-code-before-you-ship">checklist for AI-written code</Link>, and give your agent a clear <Link className="underline" href="/guides/write-a-spec-for-your-ai-coding-agent">spec</Link> so it builds the right thing. Picking tools? See the <Link className="underline" href="/use-case/coding-agents">best AI coding agents</Link> or <Link className="underline" href="/new">the newest AI tools</Link>.</p>
     </article>
   );
