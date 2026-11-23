@@ -70,7 +70,7 @@ export default function Guide() {
 
       <H2>Quick recap</H2>
       <ul className="list-disc space-y-1 pl-6"><li>Only run agents in parallel on tasks that don&apos;t touch the same files.</li><li>One worktree (folder + branch) per agent, made by hand with <code>git worktree add</code> or by Orca.</li><li>Review and merge one branch at a time, and start with two agents to keep usage costs down.</li></ul>
-      <p className="text-sm text-gray-500">Picking an agent? See our <Link className="underline" href="/use-case/coding-agents">best AI coding agents</Link>, <Link className="underline" href="/compare">side-by-side comparisons</Link>, or <Link className="underline" href="/new">the newest AI tools</Link>.</p>
+      <p className="text-sm text-gray-500">Running three or more agents and missing the one that&apos;s waiting on you? Read <Link className="underline" href="/guides/know-which-ai-coding-agent-needs-you">how to know which agent needs you</Link>. Picking an agent? See our <Link className="underline" href="/use-case/coding-agents">best AI coding agents</Link>, <Link className="underline" href="/compare">side-by-side comparisons</Link>, or <Link className="underline" href="/new">the newest AI tools</Link>.</p>
     </article>
   );
 }

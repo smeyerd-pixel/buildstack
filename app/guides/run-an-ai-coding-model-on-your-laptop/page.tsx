@@ -72,7 +72,7 @@ export default function Guide() {
 
       <H2>Quick recap</H2>
       <ul className="list-disc space-y-1 pl-6"><li>Local models are free to run, private and work offline, but need a computer with lots of memory.</li><li>Fastest path: install Ollama, run <code>ollama run flint:40b-a2b-qat-int4</code>, then <code>ollama launch opencode</code>.</li><li>Give a local model small, clear tasks and keep a paid cloud agent for the hard ones.</li></ul>
-      <p className="text-sm text-gray-500">Picking an agent? See our <Link className="underline" href="/use-case/coding-agents">best AI coding agents</Link>, <Link className="underline" href="/compare">side-by-side comparisons</Link>, or <Link className="underline" href="/new">the newest AI tools</Link>.</p>
+      <p className="text-sm text-gray-500">New in November 2026: <Link className="underline" href="/tools/inkling-2-mini">Inkling 2 Mini</Link>, a free open-weights coding model that needs about 20GB of memory (<code>ollama run inkling-2-mini</code>); see <Link className="underline" href="/guides/know-which-ai-coding-agent-needs-you">how to run several agents without babysitting them</Link>. Picking an agent? See our <Link className="underline" href="/use-case/coding-agents">best AI coding agents</Link>, <Link className="underline" href="/compare">side-by-side comparisons</Link>, or <Link className="underline" href="/new">the newest AI tools</Link>.</p>
     </article>
   );
 }
