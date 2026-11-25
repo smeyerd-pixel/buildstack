@@ -84,7 +84,7 @@ export default function Guide() {
 
       <H2>Quick recap</H2>
       <ul className="list-disc space-y-1 pl-6"><li>Agent work always lands on a branch or pull request, never straight on main.</li><li>Run <code>/genesis review main</code> and read the colors: red and yellow on money, logins or user data means don&apos;t merge yet.</li><li>Send the gaps back to the agent, re-run the review, and merge yourself.</li></ul>
-      <p className="text-sm text-gray-500">Related: <Link className="underline" href="/guides/check-ai-code-before-you-ship">check AI code before you ship</Link>, <Link className="underline" href="/guides/keep-ai-code-behind-a-quality-gate">keep AI code behind a quality gate</Link>, <Link className="underline" href="/guides/know-which-ai-coding-agent-needs-you">know which agent needs you</Link>, <Link className="underline" href="/use-case/coding-agents">best coding agents</Link>, or <Link className="underline" href="/new">the newest AI tools</Link>.</p>
+      <p className="text-sm text-gray-500">Thinking of letting AI approve routine pull requests? Here&apos;s <Link className="underline" href="/guides/let-ai-review-and-approve-your-pull-requests">a safe setup for AI review, fixes and approvals</Link>. Related: <Link className="underline" href="/guides/check-ai-code-before-you-ship">check AI code before you ship</Link>, <Link className="underline" href="/guides/keep-ai-code-behind-a-quality-gate">keep AI code behind a quality gate</Link>, <Link className="underline" href="/guides/know-which-ai-coding-agent-needs-you">know which agent needs you</Link>, <Link className="underline" href="/use-case/coding-agents">best coding agents</Link>, or <Link className="underline" href="/new">the newest AI tools</Link>.</p>
     </article>
   );
 }
