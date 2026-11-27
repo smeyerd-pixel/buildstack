@@ -67,7 +67,7 @@ export default function Guide() {
 
       <H2>Quick recap</H2>
       <ul className="list-disc space-y-1 pl-6"><li>Script three beats first: problem, the moment it works, where to try it.</li><li>Let the agent record the real app and animate the logo; ask for the plan before it renders.</li><li>Cut every pause, add captions, export one version per place you&apos;ll post.</li></ul>
-      <p className="text-sm text-gray-500">Before you launch: <Link className="underline" href="/guides/check-ai-code-before-you-ship">check AI-written code before you ship</Link>. More tools: <Link className="underline" href="/use-case/video">the best AI video tools</Link> and <Link className="underline" href="/new">the newest AI tools</Link>.</p>
+      <p className="text-sm text-gray-500">Before you launch: <Link className="underline" href="/guides/check-ai-code-before-you-ship">check AI-written code before you ship</Link> and <Link className="underline" href="/guides/check-if-ai-can-read-your-website">check that ChatGPT and AI agents can read your site</Link>. More tools: <Link className="underline" href="/use-case/video">the best AI video tools</Link> and <Link className="underline" href="/new">the newest AI tools</Link>.</p>
     </article>
   );
 }
